@@ -77,7 +77,7 @@ func (i *System) UsedSpace() int {
 	return i.path.root.Size()
 }
 
-func (i *System) FindSmallestDirGreaterThan(size int) *Directory {
+func (i *System) SmallestDirToErase(size int) *Directory {
 	list := make([]*Directory, 0)
 	findSmallestDirGreaterThan(size, i.path.root, &list)
 
