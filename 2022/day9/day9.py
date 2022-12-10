@@ -2,8 +2,11 @@ n = 10
 
 T = [(0, 0)] * n
 
-touched = list()
-touched.append(T[0])
+touchedLast = list()
+touchedLast.append(T[0])
+
+touchedNearHead = list()
+touchedNearHead.append(T[0])
 
 move = {
     'U': lambda y: (y[0], y[1]+1),
@@ -27,7 +30,6 @@ def print_grid(T: list[list], size: int):
 for line in open(0):
     d, s = line[0], int(line[2:])
     for _ in range(s):
-        prev_T = T.copy()
         next_move = move[d](T[0])
         T[0] = next_move
         for i in range(1, n):
@@ -44,7 +46,10 @@ for line in open(0):
                 if diff[1] == 2 or diff[1] == -2:
                     next_move = (next_move[0], next_move[1] - diff[1]//2)
                 T[i] = next_move
-        touched.append(T[9])
+        touchedLast.append(T[9])
+        touchedNearHead.append(T[1])
     #print_grid(T, 20)
-    
-print(len(set(touched)))
+
+print(f"First part: {len(set(touchedNearHead))}")
+print(f"Second part: {len(set(touchedLast))}")
+

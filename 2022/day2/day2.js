@@ -1,6 +1,6 @@
 const readline = require("readline");
-const ChooseSignRPS = require("./game2.1");
-const ChooseResultRPS = require("./game2.2");
+const ChooseSignRPS = require("./game1");
+const ChooseResultRPS = require("./game2");
 
 var rl = readline.createInterface({
     input: process.stdin
