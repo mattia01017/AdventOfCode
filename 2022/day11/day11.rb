@@ -1,16 +1,15 @@
 $LOAD_PATH << '.'
 
-require 'Part1'
-require 'Part2'
+require 'monkeys'
+require 'parser'
 
-first_parser = MonkeyParser.new
-second_parser = BigMonkeyParser.new
+parser = MonkeyParser.new
 
 $/ = 'END'
 input = gets
 
-monkeys1 = first_parser.read(input)
-monkeys2 = second_parser.read(input)
+monkeys1 = parser.read(input)
+monkeys2 = parser.read(input, big=true)
 
 20.times do
     monkeys1.map { |m| m.inspect }
@@ -20,5 +19,5 @@ end
     monkeys2.map { |m| m.inspect }
 end
 
-puts "First monkeys: " + monkeys1.map { |m| m.insp_counter }.to_s
-puts "Second monkeys: " + monkeys2.map { |m| m.insp_counter }.to_s
+puts "First part monkeys: " + monkeys1.map { |m| m.insp_counter }.to_s
+puts "Second part monkeys: " + monkeys2.map { |m| m.insp_counter }.to_s
