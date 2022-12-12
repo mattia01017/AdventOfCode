@@ -1,4 +1,4 @@
-class Monkey
+class BigMonkey
     attr_reader :insp_counter, :items, :modulo
     attr_writer :max_val
 
@@ -27,7 +27,7 @@ class Monkey
     end
 end
 
-class Parser
+class BigMonkeyParser
     def read(input)
         monkeys = []
         input.split("\n\n").each do |monkey_str|
@@ -41,7 +41,7 @@ class Parser
                 lines[5][-1].to_i,
             ]
 
-            monkeys.append Monkey.new(
+            monkeys.append BigMonkey.new(
                 monkeys, items, incrementer, modulo, to_throw
             )
         end
@@ -78,20 +78,4 @@ class Parser
     def parse_modulo(line)
         line[line.rindex(" ")+1..].to_i
     end
-
-    private
 end
-
-$/ = "END"
-input = gets
-
-x = Parser.new
-monkeys = x.read(input)
-
-10000.times do
-    monkeys.map { |monkey| monkey.inspect } 
-end
-
-counters = monkeys.map { |monkey| monkey.insp_counter }
-
-puts counters.sort.to_s
